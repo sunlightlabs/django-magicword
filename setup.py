@@ -4,9 +4,9 @@ from distutils.core import setup
 
 setup(
     name='magicword',
-    version='0.1',
+    version='1.0',
     description='Single word authentication',
-    long_description='Use a single word to protect a product in development.',
+    long_description='Use a single word to password protect a page or site.',
     license='',
     author='Jeremy Carbaugh',
     author_email='jcarbaugh@sunlightfoundation.com',

@@ -7,10 +7,10 @@ setup(
     version='1.0',
     description='Single word authentication',
     long_description='Use a single word to password protect a page or site.',
-    license='',
+    license='BSD',
     author='Jeremy Carbaugh',
     author_email='jcarbaugh@sunlightfoundation.com',
-    url='',
+    url='https://github.com/sunlightlabs/django-magicword',
     download_url='',
     packages=['magicword'],
     classifiers=[

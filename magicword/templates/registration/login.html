@@ -60,7 +60,7 @@
                 So sorry, that's not the magic word.
             </div>
         {% endif %}
-        <form action="{% url 'django.contrib.auth.views.login' %}" method="post">
+        <form action="{% url login %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="username" value="themagicwordis">
             <input type="hidden" name="next" value="{{ next }}">

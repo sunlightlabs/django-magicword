@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>What is the magic word?</title>
+        <style>
+            body {
+                color: #666;
+                font-family: sans-serif;
+                margin-top: 10em;
+                text-align: center;
+            }
+            .message {
+                font-size: ;
+                margin: 0 auto 2em auto;
+                width: 400px;
+                text-shadow: 0 1px 3px #CCC;
+            }
+            input {
+                border: 1px solid #CCC;
+                box-shadow: 0 0 4px #DDD;
+                color: #666;
+                font-family: Times, serif;
+                font-size: 140%;
+                font-style: oblique;
+                padding: 5px;
+            }
+            button {
+                background-color: #EBEBE9;
+                background-image: -webkit-linear-gradient(top, white, #EBEBE9 70%);
+                background-image:    -moz-linear-gradient(top, white, #EBEBE9 70%);
+                background-image:      -o-linear-gradient(top, white, #EBEBE9 70%);
+                background-image:         linear-gradient(top, white, #EBEBE9 70%);
+                border: 1px solid #CCC;
+                box-shadow: 0 0 3px #DDD;
+                color: #666;
+                font-size: 140%;
+                padding: 5px 20px;
+                text-shadow: 0px 1px 3px #CCC;
+                -webkit-border-radius: 5px;
+                   -moz-border-radius: 5px;
+                        border-radius: 5px;
+            }
+            button:hover {
+                box-shadow: 0 0 5px #CCC;
+            }
+            button:active {
+                background-color: #CCC;
+                background-image: -webkit-linear-gradient(top, #EBEBE9 30%, #fff);
+                background-image:    -moz-linear-gradient(top, #EBEBE9 30%, #fff);
+                background-image:      -o-linear-gradient(top, #EBEBE9 30%, #fff);
+                background-image:         linear-gradient(top, #EBEBE9 30%, #fff);
+                text-shadow: 0px -1px 3px #FFF;
+            }
+        </style>
+    </head>
+    <body>
+        {% if form.errors %}
+            <div class="message">
+                So sorry, that's not the magic word.
+            </div>
+        {% endif %}
+        <form action="{% url 'django.contrib.auth.views.login' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="themagicwordis">
+            <input type="hidden" name="next" value="{{ next }}">
+            <input type="password" placeholder="The magic word is..." name="password">
+            <button type="submit">Log in</button>
+        </form>
+    </body>
+</html>

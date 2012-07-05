@@ -1,5 +1,8 @@
+import uuid
+
 from django.conf import settings
-from django.contrib.auth.models import User, get_hexdigest
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User
 
 from magicword.models import MagicWord
 
@@ -14,13 +17,13 @@ class MagicWordBackend(object):
 
         username = MAGICAUTH_USERNAME
 
-        if MagicWord.objects.exists(password=password, is_enabled=True):
+        if MagicWord.objects.filter(password=password, is_enabled=True).exists():
 
             try:
                 user = User.objects.get(username=username)
             except User.DoesNotExist:
 
-                password = get_hexdigest("sha1", "54L7", username)
+                password = make_password(uuid.uuid4().hex)
 
                 user = User(username=username, password=password)
                 user.first_name = MAGICAUTH_FIRST_NAME
